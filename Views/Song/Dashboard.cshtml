@@ -1,0 +1,19 @@
+@{
+  ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+  <h1>Song Smithy</h1>
+  <form asp-controller="Song" asp-action="CreateMidi">
+    <label for="key">Key: </label>
+    <select name="key" id="key">
+      <option value="3">C Major</option>
+    </select>
+    <label for="tempo">Tempo: </label>
+    <input type="number" name="tempo">
+    <label for="duration">Duration: </label>
+    <input type="number" name="duration">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
