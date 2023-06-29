@@ -4,16 +4,19 @@
 
 <p>Click the play button to listen to the generated song.</p>
 <midi-player
-  src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+  src="Songs/MIDI_sample.mid"
   sound-font
   visualizer="#myVisualizer"
 >
 </midi-player>
 <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
 @{
-    string scriptTag = "<script src=\"https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0\"></script>";
+  string scriptTag = "<script src=\"https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0\"></script>";
 }
 
 @Html.Raw(scriptTag)
 
 
+@* 
+https://upload.wikimedia.org/wikipedia/commons/5/55/MIDI_sample.mid
+https://magenta.github.io/magenta-js/music/demos/melody.mid *@
