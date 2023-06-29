@@ -46,35 +46,27 @@ public class SongController : Controller
   {
     // Generate the filename
     string filename = DateTime.Now.ToString("yyyyMMddHHmmss") + ".mid";
-
     // Create a list of notes based on the provided key and duration
     List<string> notes = GenerateNotes(key, duration);
-
     // Parse the notes and convert them to MIDI values
     PitchParser pitchParser = new PitchParser();
     var midiValues = pitchParser.Parse(notes);
-
     if (midiValues.Any())
     {
       // Save the MIDI file using the MidiExporter
       var exporter = new MidiExporter();
-      string filePath = Path.Combine("Songs", filename);
+      string filePath = Path.Combine("wwwroot/Songs", filename);
       exporter.SaveToFile(filePath, midiValues);
-
-      return RedirectToAction("PlayMidi", new { filePath });
+      return RedirectToAction("PlayMidi", new { filename });
     }
-
     return View();
   }
 
-  [HttpGet("/Songs/PlaySong/{filePath}")]
-  public IActionResult PlayMidi(string filePath)
+  [HttpGet("/Songs/PlaySong/{filename}")]
+  public IActionResult PlayMidi(string filename)
   {
-    filePath = filePath.Replace("\\", "/");
-    ViewBag.FileUrl = filePath;
-    string midiFile = "C:/Users/themo/OneDrive/Documents/Coding Dojo Stuffs/Projects/SongSmith/Songs/20230628173741.mid";
-    var sequence = new MidiFile(midiFile);
-    Console.WriteLine("test");
+    filename = filename.Replace("\\", "/");
+    ViewBag.FileUrl = filename;
     return View("MidiCreated");
   }
 
