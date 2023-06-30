@@ -1,235 +1,291 @@
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using NAudio.Midi;
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using NAudio.Midi;
 
-class Generator
-{
-  static void Main(string[] args)
-  {
-    // typical args :
-    //      guitar.mid E3 A3 D4 G4 B4 E5
-    // or
-    //      ukulele.mid G4 C4 E4 A4
-    if (args.Length == 0)
-    {
-      Console.WriteLine("Usage: <output-filename> <list-of-notes>");
-      return;
-    }
+// class Generator
+// {
+//   static void Main(string[] args)
+//   {
+//     if (args.Length < 3)
+//     {
+//       Console.WriteLine("Usage: <output-filename> <list-of-notes> <tempo>");
+//       return;
+//     }
 
-    string outputFilename = args[0];
+//     string outputFilename = args[0];
+//     int tempo = Convert.ToInt32(args[args.Length - 1]);
 
-    PitchParser pitchParser = new PitchParser();
+//     PitchParser pitchParser = new PitchParser();
+//     PatchParser patchParser = new PatchParser();
 
-    var midiValues = pitchParser.Parse(args.Skip(1));
+//     var midiValues = pitchParser.Parse(args.Skip(1).Take(args.Length - 2));
 
-    if (midiValues.Any())
-    {
-      var exporter = new MidiExporter();
-      exporter.SaveToFile(outputFilename, midiValues);
-    }
-  }
-}
+//     if (midiValues.Any())
+//     {
+//       // Create a list of notes for drum beats after the fourth measure
+//       List<string> drumBeats = GenerateDrumBeats(midiValues.Count(), tempo);
 
-public class PatchParser
-{
-  Dictionary<string, int> patchMap = new Dictionary<string, int>();
+//       // Convert the drum beats to MIDI values
+//       var drumValues = pitchParser.Parse(drumBeats);
 
-  public PatchParser()
-  {
-    this.patchMap.Add("nylon", 25);
-    this.patchMap.Add("steel", 26);
-    this.patchMap.Add("jazz", 27);
-    this.patchMap.Add("clean", 28);
-    this.patchMap.Add("muted", 29);
-    this.patchMap.Add("distortion", 31);
-    this.patchMap.Add("bass", 33);
-    this.patchMap.Add("violin", 41);
-    this.patchMap.Add("viola", 42);
-    this.patchMap.Add("cello", 43);
-    this.patchMap.Add("sitar", 105);
-    this.patchMap.Add("banjo", 106);
-    this.patchMap.Add("fiddle", 111);
-  }
+//       // Combine the original notes and drum beats
+//       var allNotes = midiValues.Concat(drumValues);
 
-  public int Patch(string value)
-  {
-    const int DefaultPatch = 25;
+//       var exporter = new MidiExporter();
+//       exporter.SaveToFile(outputFilename, allNotes, tempo);
+//     }
+//   }
 
-    int patch = DefaultPatch;
+//   private static List<string> GenerateDrumBeats(int noteCount, int tempo)
+//   {
+//     const int measuresBeforeDrums = 4;
+//     const int beatsPerMeasure = 4;
+//     const int drumNotesPerBeat = 2;
 
-    try
-    {
-      patch = this.patchMap[value.ToLower()];
-    }
-    catch (KeyNotFoundException)
-    {
-      patch = DefaultPatch;
-    }
+//     List<string> drumBeats = new List<string>();
 
-    return patch;
-  }
-}
+//     // Determine the number of measures including drums
+//     int measuresWithDrums = (noteCount / beatsPerMeasure) + measuresBeforeDrums;
 
-public class PitchParser
-{
-  Dictionary<char, int> pitchOffsets;
-  Dictionary<char, int> pitchModifiers;
+//     for (int measure = 0; measure < measuresWithDrums; measure++)
+//     {
+//       bool isDrumMeasure = measure >= measuresBeforeDrums;
 
-  public PitchParser()
-  {
-    this.pitchOffsets = new Dictionary<char, int>();
-    this.pitchModifiers = new Dictionary<char, int>();
+//       for (int beat = 0; beat < beatsPerMeasure; beat++)
+//       {
+//         bool isDrumBeat = isDrumMeasure && (beat % drumNotesPerBeat == 0);
 
-    this.pitchOffsets.Add('c', 0);
-    this.pitchOffsets.Add('d', 2);
-    this.pitchOffsets.Add('e', 4);
-    this.pitchOffsets.Add('f', 5);
-    this.pitchOffsets.Add('g', 7);
-    this.pitchOffsets.Add('a', 9);
-    this.pitchOffsets.Add('b', 11);
+//         if (isDrumBeat)
+//         {
+//           // Add drum beats
+//           drumBeats.Add("Bass Drum 1");
+//           drumBeats.Add("Closed Hi-Hat");
+//           drumBeats.Add("Electric Snare");
+//         }
+//         else
+//         {
+//           // Add empty beats
+//           drumBeats.Add(string.Empty);
+//           drumBeats.Add(string.Empty);
+//         }
+//       }
+//     }
 
-    this.pitchModifiers.Add('#', 1);
-    this.pitchModifiers.Add('b', -1);
-  }
+//     return drumBeats;
+//   }
+// }
 
-  public Pitch PitchFromString(string midiNotation)
-  {
-    const int MinimumStringLength = 2;
+// public class PatchParser
+// {
+//   Dictionary<string, int> patchMap = new Dictionary<string, int>();
 
-    if (midiNotation.Length < MinimumStringLength)
-      throw new ArgumentException();
+//   public PatchParser()
+//   {
+//     this.patchMap.Add("nylon", 25);
+//     this.patchMap.Add("steel", 26);
+//     this.patchMap.Add("jazz", 27);
+//     this.patchMap.Add("clean", 28);
+//     this.patchMap.Add("muted", 29);
+//     this.patchMap.Add("distortion", 31);
+//     this.patchMap.Add("bass", 33);
+//     this.patchMap.Add("violin", 41);
+//     this.patchMap.Add("viola", 42);
+//     this.patchMap.Add("cello", 43);
+//     this.patchMap.Add("sitar", 105);
+//     this.patchMap.Add("banjo", 106);
+//     this.patchMap.Add("fiddle", 111);
+//   }
 
-    string name = FindName(midiNotation);
-    string modifier = FindModifier(midiNotation);
-    int octave = FindOctave(midiNotation);
+//   public int Patch(string value)
+//   {
+//     const int DefaultPatch = 25;
 
-    int midiValue = CalculateMidiValue(name, modifier, octave);
+//     int patch = DefaultPatch;
 
-    return new Pitch(midiValue);
-  }
+//     try
+//     {
+//       patch = this.patchMap[value.ToLower()];
+//     }
+//     catch (KeyNotFoundException)
+//     {
+//       patch = DefaultPatch;
+//     }
 
-  public IEnumerable<Pitch> Parse(IEnumerable<string> noteList)
-  {
-    var list = new List<Pitch>();
+//     return patch;
+//   }
+// }
 
-    noteList.Where(note => !String.IsNullOrWhiteSpace(note)).ToList().ForEach(note => list.Add(this.PitchFromString(note)));
+// public class PitchParser
+// {
+//   Dictionary<char, int> pitchOffsets;
+//   Dictionary<char, int> pitchModifiers;
+//   Dictionary<string, int> drumMap;
 
-    return list;
-  }
+//   public PitchParser()
+//   {
+//     this.pitchOffsets = new Dictionary<char, int>();
+//     this.pitchModifiers = new Dictionary<char, int>();
+//     this.drumMap = new Dictionary<string, int>();
 
-  private string FindName(string midiNotation)
-  {
-    return midiNotation.Substring(0, 1).ToLower();
-  }
+//     this.pitchOffsets.Add('c', 0);
+//     this.pitchOffsets.Add('d', 2);
+//     this.pitchOffsets.Add('e', 4);
+//     this.pitchOffsets.Add('f', 5);
+//     this.pitchOffsets.Add('g', 7);
+//     this.pitchOffsets.Add('a', 9);
+//     this.pitchOffsets.Add('b', 11);
 
-  private string FindModifier(string midiNotation)
-  {
-    const int MaximumStringLength = 3;
+//     this.pitchModifiers.Add('#', 1);
+//     this.pitchModifiers.Add('b', -1);
 
-    if (midiNotation.Length == MaximumStringLength)
-    {
-      return midiNotation.Substring(1, 1).ToLower();
-    }
+//     this.drumMap.Add("closed hi-hat", 42);
+//     this.drumMap.Add("electric snare", 40);
+//     this.drumMap.Add("bass drum 1", 36);
+//   }
 
-    return string.Empty;
-  }
+//   public Pitch PitchFromString(string midiNotation)
+//   {
+//     const int MinimumStringLength = 2;
 
-  private int FindOctave(string midiNotation)
-  {
-    const int MaximumStringLength = 3;
-    int startIndex = 1;
+//     if (midiNotation.Length < MinimumStringLength)
+//       throw new ArgumentException();
 
-    if (midiNotation.Length == MaximumStringLength)
-    {
-      startIndex = 2;
-    }
+//     string name = FindName(midiNotation);
+//     string modifier = FindModifier(midiNotation);
+//     int octave = FindOctave(midiNotation);
 
-    return Int32.Parse(midiNotation.Substring(startIndex, 1));
-  }
+//     int midiValue = CalculateMidiValue(name, modifier, octave);
 
-  private int CalculateMidiValue(string noteName, string modifier, int octave)
-  {
-    int value = 0;
+//     return new Pitch(midiValue);
+//   }
 
-    try
-    {
-      value = this.pitchOffsets[noteName[0]];
+//   public IEnumerable<Pitch> Parse(IEnumerable<string> noteList)
+//   {
+//     var list = new List<Pitch>();
 
-      if (!String.IsNullOrEmpty(modifier))
-      {
-        value += this.pitchModifiers[modifier[0]];
-      }
-    }
-    catch (KeyNotFoundException)
-    {
-      value = 0;
-    }
+//     noteList.Where(note => !String.IsNullOrWhiteSpace(note)).ToList().ForEach(note =>
+//     {
+//       if (drumMap.ContainsKey(note.ToLower()))
+//       {
+//         list.Add(new Pitch(drumMap[note.ToLower()]));
+//       }
+//       else
+//       {
+//         list.Add(this.PitchFromString(note));
+//       }
+//     });
 
-    const int SemitonesInOctave = 12;
+//     return list;
+//   }
 
-    return value + (SemitonesInOctave * octave);
-  }
-}
+//   private string FindName(string midiNotation)
+//   {
+//     return midiNotation.Substring(0, 1).ToLower();
+//   }
 
-public class Pitch
-{
-  const int MinimumMidiValue = 0;
-  const int MaximumMidiValue = 255;
+//   private string FindModifier(string midiNotation)
+//   {
+//     const int MaximumStringLength = 3;
 
-  public Pitch(int value)
-  {
-    this.MidiValue = Math.Min(MaximumMidiValue, Math.Max(value, MinimumMidiValue));
-  }
+//     if (midiNotation.Length == MaximumStringLength)
+//     {
+//       return midiNotation.Substring(1, 1).ToLower();
+//     }
 
-  public int MidiValue { get; private set; }
-}
+//     return string.Empty;
+//   }
 
-public class MidiExporter
-{
-  public void SaveToFile(string fileName, IEnumerable<Pitch> allNotes)
-  {
-    const int MidiFileType = 0;
-    const int BeatsPerMinute = 60;
-    const int TicksPerQuarterNote = 120;
+//   private int FindOctave(string midiNotation)
+//   {
+//     const int MaximumStringLength = 3;
+//     int startIndex = 1;
 
-    const int TrackNumber = 0;
-    const int ChannelNumber = 1;
+//     if (midiNotation.Length == MaximumStringLength)
+//     {
+//       startIndex = 2;
+//     }
 
-    long absoluteTime = 0;
+//     return Int32.Parse(midiNotation.Substring(startIndex, 1));
+//   }
 
-    var collection = new MidiEventCollection(MidiFileType, TicksPerQuarterNote);
+//   private int CalculateMidiValue(string noteName, string modifier, int octave)
+//   {
+//     int value = 0;
 
-    collection.AddEvent(new TextEvent("Note Stream", MetaEventType.TextEvent, absoluteTime), TrackNumber);
-    ++absoluteTime;
-    collection.AddEvent(new TempoEvent(CalculateMicrosecondsPerQuaterNote(BeatsPerMinute), absoluteTime), TrackNumber);
+//     try
+//     {
+//       value = this.pitchOffsets[noteName[0]];
 
-    var patchParser = new PatchParser();
-    int patchNumber = patchParser.Patch("steel");
+//       if (!String.IsNullOrEmpty(modifier))
+//       {
+//         value += this.pitchModifiers[modifier[0]];
+//       }
+//     }
+//     catch (KeyNotFoundException)
+//     {
+//       value = 0;
+//     }
 
-    collection.AddEvent(new PatchChangeEvent(0, ChannelNumber, patchNumber), TrackNumber);
+//     const int SemitonesInOctave = 12;
 
-    const int NoteVelocity = 100;
-    const int NoteDuration = 3 * TicksPerQuarterNote / 4;
-    const long SpaceBetweenNotes = TicksPerQuarterNote;
+//     return value + (SemitonesInOctave * octave);
+//   }
+// }
 
-    foreach (var note in allNotes)
-    {
-      collection.AddEvent(new NoteOnEvent(absoluteTime, ChannelNumber, note.MidiValue, NoteVelocity, NoteDuration), TrackNumber);
-      collection.AddEvent(new NoteEvent(absoluteTime + NoteDuration, ChannelNumber, MidiCommandCode.NoteOff, note.MidiValue, 0), TrackNumber);
+// public class Pitch
+// {
+//   const int MinimumMidiValue = 0;
+//   const int MaximumMidiValue = 255;
 
-      absoluteTime += SpaceBetweenNotes;
-    }
+//   public Pitch(int value)
+//   {
+//     this.MidiValue = Math.Min(MaximumMidiValue, Math.Max(value, MinimumMidiValue));
+//   }
 
-    collection.PrepareForExport();
-    MidiFile.Export(fileName, collection);
-  }
+//   public int MidiValue { get; private set; }
+// }
 
-  private static int CalculateMicrosecondsPerQuaterNote(int bpm)
-  {
-    return 60 * 1000 * 1000 / bpm;
-  }
-}
+// public class MidiExporter
+// {
+//   public void SaveToFile(string fileName, IEnumerable<Pitch> allNotes, int bpm)
+//   {
+//     const int MidiFileType = 0;
+//     const int TicksPerQuarterNote = 120;
 
+//     const int TrackNumber = 0;
+//     const int DrumChannelNumber = 9; // Channel 10 for drums
+//     const int DrumPatchNumber = 0; // Program Change 1 for Standard Drum Kit
 
+//     long absoluteTime = 0;
+
+//     var collection = new MidiEventCollection(MidiFileType, TicksPerQuarterNote);
+
+//     collection.AddEvent(new TextEvent("Note Stream", MetaEventType.TextEvent, absoluteTime), TrackNumber);
+//     ++absoluteTime;
+//     collection.AddEvent(new TempoEvent(CalculateMicrosecondsPerQuaterNote(bpm), absoluteTime), TrackNumber);
+
+//     collection.AddEvent(new PatchChangeEvent(0, DrumChannelNumber, DrumPatchNumber), TrackNumber); // Set drum patch
+
+//     const int NoteVelocity = 100;
+//     const int NoteDuration = 3 * TicksPerQuarterNote / 4;
+//     const long SpaceBetweenNotes = TicksPerQuarterNote;
+
+//     foreach (var note in allNotes)
+//     {
+//       collection.AddEvent(new NoteOnEvent(absoluteTime, DrumChannelNumber, note.MidiValue, NoteVelocity, NoteDuration), TrackNumber);
+//       collection.AddEvent(new NoteEvent(absoluteTime + NoteDuration, DrumChannelNumber, MidiCommandCode.NoteOff, note.MidiValue, 0), TrackNumber);
+
+//       absoluteTime += SpaceBetweenNotes;
+//     }
+
+//     collection.PrepareForExport();
+//     MidiFile.Export(fileName, collection);
+//   }
+
+//   private static int CalculateMicrosecondsPerQuaterNote(int bpm)
+//   {
+//     return 60 * 1000 * 1000 / bpm;
+//   }
+// }

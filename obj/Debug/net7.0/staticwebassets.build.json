@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7bRhimCxlClAYReRnJKN3B1psQnIVrUT4JwBX2PIP8w=",
+  "Hash": "gM1vclhNlgPr7G22MF6ULqMvRVtjZTtJb34HTtzPf4o=",
   "Source": "SongSmith",
   "BasePath": "_content/SongSmith",
   "Mode": "Default",
@@ -2108,12 +2108,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230628173741.mid",
+      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230630015135.mid",
       "SourceId": "SongSmith",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
       "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230628173741.mid",
+      "RelativePath": "Songs/20230630015135.mid",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2122,15 +2122,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230628173741.mid"
+      "OriginalItemSpec": "wwwroot\\Songs\\20230630015135.mid"
     },
     {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230628174233.mid",
+      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230630015300.mid",
       "SourceId": "SongSmith",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
       "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230628174233.mid",
+      "RelativePath": "Songs/20230630015300.mid",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2139,15 +2139,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230628174233.mid"
+      "OriginalItemSpec": "wwwroot\\Songs\\20230630015300.mid"
     },
     {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230628180557.mid",
+      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230630015542.mid",
       "SourceId": "SongSmith",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
       "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230628180557.mid",
+      "RelativePath": "Songs/20230630015542.mid",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2156,15 +2156,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230628180557.mid"
+      "OriginalItemSpec": "wwwroot\\Songs\\20230630015542.mid"
     },
     {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230628181023.mid",
+      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230630015601.mid",
       "SourceId": "SongSmith",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
       "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230628181023.mid",
+      "RelativePath": "Songs/20230630015601.mid",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2173,15 +2173,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230628181023.mid"
+      "OriginalItemSpec": "wwwroot\\Songs\\20230630015601.mid"
     },
     {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230628182251.mid",
+      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230630015616.mid",
       "SourceId": "SongSmith",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
       "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230628182251.mid",
+      "RelativePath": "Songs/20230630015616.mid",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2190,15 +2190,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230628182251.mid"
+      "OriginalItemSpec": "wwwroot\\Songs\\20230630015616.mid"
     },
     {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230628195125.mid",
+      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230630015630.mid",
       "SourceId": "SongSmith",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
       "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230628195125.mid",
+      "RelativePath": "Songs/20230630015630.mid",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2207,58 +2207,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230628195125.mid"
-    },
-    {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230629104132.mid",
-      "SourceId": "SongSmith",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
-      "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230629104132.mid",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230629104132.mid"
-    },
-    {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230629104805.mid",
-      "SourceId": "SongSmith",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
-      "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230629104805.mid",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230629104805.mid"
-    },
-    {
-      "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\20230629110332.mid",
-      "SourceId": "SongSmith",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\",
-      "BasePath": "_content/SongSmith",
-      "RelativePath": "Songs/20230629110332.mid",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Songs\\20230629110332.mid"
+      "OriginalItemSpec": "wwwroot\\Songs\\20230630015630.mid"
     },
     {
       "Identity": "C:\\Users\\themo\\OneDrive\\Documents\\Coding Dojo Stuffs\\Projects\\SongSmith\\wwwroot\\Songs\\MIDI_sample.mid",

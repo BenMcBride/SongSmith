@@ -116,12 +116,6 @@ C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debu
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\MySqlConnector.dll
-C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\NAudio.dll
-C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\NAudio.Asio.dll
-C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\NAudio.Core.dll
-C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\NAudio.Midi.dll
-C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\NAudio.Wasapi.dll
-C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\NAudio.WinMM.dll
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\SendGrid.dll
@@ -178,3 +172,7 @@ C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\obj\Debu
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\obj\Debug\net7.0\SongSmith.pdb
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\obj\Debug\net7.0\SongSmith.genruntimeconfig.cache
 C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\obj\Debug\net7.0\ref\SongSmith.dll
+C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Melanchall_DryWetMidi_Native32.dll
+C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Melanchall_DryWetMidi_Native64.dll
+C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Melanchall_DryWetMidi_Native64.dylib
+C:\Users\themo\OneDrive\Documents\Coding Dojo Stuffs\Projects\SongSmith\bin\Debug\net7.0\Melanchall.DryWetMidi.dll

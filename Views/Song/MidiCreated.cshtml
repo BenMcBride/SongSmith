@@ -1,7 +1,11 @@
 @model string
 
 <h1>MIDI Created</h1>
-
+<style>
+  midi-visualizer {
+    background-color: rgba(0, 0, 0, 0.5); /* This sets the background to a semi-transparent black color */
+  }
+</style>
 <p>Click the play button to listen to the generated song.</p>
 @{
   string midiTag = $"<midi-player src=\"/Songs/{Html.Raw(ViewBag.FileUrl)}\" sound-font visualizer=\"#myVisualizer\"></midi-player>";
