@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using SongSmith.Models;
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
@@ -7,7 +8,7 @@ using Melanchall.DryWetMidi.Common;
 using NoteName = Melanchall.DryWetMidi.MusicTheory.NoteName;
 
 namespace SongSmith.Controllers;
-
+[Authorize]
 public class SongController : Controller
 {
   private readonly ILogger<SongController> _logger;
@@ -111,22 +112,23 @@ public class SongController : Controller
     return bassNotes;
   }
 
-  private List<Note> GenerateHarmoniousChords(List<Note> melodyNotes)
+  private List<List<Note>> GenerateHarmoniousChords(List<Note> melodyNotes)
   {
-    var chords = new List<Note>();
+    var chords = new List<List<Note>>();
     Dictionary<NoteName, NoteName[]> harmoniousChords = new Dictionary<NoteName, NoteName[]>
-  {
-    { NoteName.C, new NoteName[] { NoteName.C, NoteName.E, NoteName.G } },
-    { NoteName.D, new NoteName[] { NoteName.D, NoteName.F, NoteName.A } },
-    { NoteName.E, new NoteName[] { NoteName.E, NoteName.G, NoteName.B } },
-    { NoteName.F, new NoteName[] { NoteName.F, NoteName.A, NoteName.C } },
-    { NoteName.G, new NoteName[] { NoteName.G, NoteName.B, NoteName.D } },
-    { NoteName.A, new NoteName[] { NoteName.A, NoteName.C, NoteName.E } },
-    { NoteName.B, new NoteName[] { NoteName.B, NoteName.D, NoteName.F } },
-  };
+    {
+      { NoteName.C, new NoteName[] { NoteName.C, NoteName.E, NoteName.G } },
+      { NoteName.D, new NoteName[] { NoteName.D, NoteName.F, NoteName.A } },
+      { NoteName.E, new NoteName[] { NoteName.E, NoteName.G, NoteName.B } },
+      { NoteName.F, new NoteName[] { NoteName.F, NoteName.A, NoteName.C } },
+      { NoteName.G, new NoteName[] { NoteName.G, NoteName.B, NoteName.D } },
+      { NoteName.A, new NoteName[] { NoteName.A, NoteName.C, NoteName.E } },
+      { NoteName.B, new NoteName[] { NoteName.B, NoteName.D, NoteName.F } },
+    };
 
     for (int i = 0; i < melodyNotes.Count / 2 - 12; i += 2)
     {
+      var chord = new List<Note>();
       var melodyNote = melodyNotes[i];
       var octave = melodyNote.Octave + 1;
       var length = melodyNote.Length * 2;
@@ -134,20 +136,22 @@ public class SongController : Controller
       if (i <= 62)
       {
         var chordNote = new Note((SevenBitNumber)2, length, time);
-        chords.Add(chordNote);
+        chord.Add(chordNote);
       }
       else
       {
-        var chord = harmoniousChords[melodyNote.NoteName];
-        foreach (var noteName in chord)
+        var chordNotes = harmoniousChords[melodyNote.NoteName];
+        foreach (var noteName in chordNotes)
         {
           var chordNote = new Note(noteName, octave, length, time);
-          chords.Add(chordNote);
+          chord.Add(chordNote);
         }
       }
+      chords.Add(chord);
     }
     return chords;
   }
+
 
 
   public IActionResult CreateMidi(int tempo, int key, int duration)
@@ -160,7 +164,7 @@ public class SongController : Controller
 
     var melodyNotes = GenerateNotes(ticks, tempo);
     var bassLineNotes = GenerateBassLine(melodyNotes);
-    var chordNotes = GenerateHarmoniousChords(melodyNotes);
+    var chordChords = GenerateHarmoniousChords(melodyNotes);
 
     var hiHatMeasure = new List<int[]> { new int[] { 0, 1, 2, 3, 4, 5, 6, 7 } };
     var bassDrumMeasure = new List<int[]> { new int[] { 0, 1, 4, 5 } };
@@ -192,13 +196,16 @@ public class SongController : Controller
       bassLineTrackChunk.Events.Add(noteOffEvent);
     }
 
-    foreach (var note in chordNotes)
+    foreach (var chord in chordChords)
     {
-      note.Velocity = (SevenBitNumber)80;
-      var noteOnEvent = new NoteOnEvent((SevenBitNumber)note.NoteNumber, note.Velocity) { DeltaTime = 0, Channel = (FourBitNumber)0 };
-      var noteOffEvent = new NoteOffEvent((SevenBitNumber)note.NoteNumber, note.Velocity) { DeltaTime = note.Length, Channel = (FourBitNumber)0 };
-      chordTrackChunk.Events.Add(noteOnEvent);
-      chordTrackChunk.Events.Add(noteOffEvent);
+      foreach (var note in chord)
+      {
+        note.Velocity = (SevenBitNumber)80;
+        var noteOnEvent = new NoteOnEvent((SevenBitNumber)note.NoteNumber, note.Velocity) { DeltaTime = 0, Channel = (FourBitNumber)0 };
+        var noteOffEvent = new NoteOffEvent((SevenBitNumber)note.NoteNumber, note.Velocity) { DeltaTime = note.Length, Channel = (FourBitNumber)0 };
+        chordTrackChunk.Events.Add(noteOnEvent);
+        chordTrackChunk.Events.Add(noteOffEvent);
+      }
     }
 
     var drumTracks = new List<(TrackChunk, IEnumerable<Note>)>
